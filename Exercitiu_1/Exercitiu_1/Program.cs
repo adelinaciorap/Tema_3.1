@@ -13,18 +13,11 @@ namespace Exercitiu_1
             //Given an array of ints, write a C# method to total all the values that are even number.
 
 
-
             int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
 
             Console.WriteLine(SumaNumerelor( array));
 
-
         }
-
-
-
-
 
         private static int SumaNumerelor(int[] array)
         {
@@ -38,7 +31,6 @@ namespace Exercitiu_1
                 {
                     sum = sum + array[i];
                 }
-
 
             }
             return sum;
