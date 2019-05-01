@@ -11,9 +11,20 @@ namespace Exercitiu_4
         static void Main(string[] args)
 
         { //Algorithm to find if Array contains duplicates?
+            
+             bool ContainsDuplicatesnum = ContainsDuplicates(new int[] { 2, 4, 5, 4, 7, 1 });
+                if (ContainsDuplicatesnum)
+                {
+                    Console.WriteLine("Array has Duplicates");
+                }
+                else
+                {
+                    Console.WriteLine("Array has no duplicates.");
+                }
+            
 
-            int[] items = { 2, 3, 5, 4, 7, 1 };
-            Console.WriteLine(ContainsDuplicates(items));
+            //int[] items = { 2, 3, 5, 4, 7, 1 };
+            //Console.WriteLine(ContainsDuplicates(items));
         }
         public static bool ContainsDuplicates(int[] a)
         {
