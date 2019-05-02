@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +9,16 @@ namespace Exercitiu_3
 {
     class Program
     {
+        const int _max = 100000;
         static void Main(string[] args)
-
+            
         {
+
             Console.Write("Enter a Number to find factorial: ");
 
-            int n = Convert.ToInt32(Console.ReadLine());
+            double n = Convert.ToInt32(Console.ReadLine());
 
-            int r = Fact(n);
+            double r = Fact(n);
 
             Console.WriteLine("{0}! = {1}", n, r);
 
@@ -29,9 +32,21 @@ namespace Exercitiu_3
 
             Console.WriteLine("{0}! = {1}", n, r);
 
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            Fact(n);
+            sw.Stop();
+            Console.WriteLine("Time Taken Recursive-->{0}", ((double)(sw.Elapsed.TotalMilliseconds * 1000000) /
+            _max).ToString("0.00 ns"));
+           
+            sw.Start();
+            Factorial(n);
+            sw.Stop();
+            Console.WriteLine("Time Taken Iterative-->{0}", ((double)(sw.Elapsed.TotalMilliseconds * 1000000) /
+            _max).ToString("0.00 ns"));
         }
 
-        static int Fact(int n)
+        static double Fact(double n)
 
         {
 
@@ -44,7 +59,7 @@ namespace Exercitiu_3
         }
         
 
-        static int Factorial(int n)
+        static double Factorial(double n)
 
         {
             if (n <= 1)
