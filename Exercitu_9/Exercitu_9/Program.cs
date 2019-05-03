@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercitiu_8
+namespace Exercitu_9
 {
     class Program
-    { //How to detect a cycle in a singly linked list?
-      
-         
+    {
+        static void Main(string[] args)
+        {
+        }
     }
 }
-
-    
