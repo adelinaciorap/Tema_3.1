@@ -7,87 +7,47 @@ using System.Threading.Tasks;
 namespace Exercitiu_14
 {
     class Program
-    {  //How to find the 3rd element from the end, in a singly linked, in a single pass?
-        static int count = 0, data = 0;
-
-        // a node of a linked list  
-        class Node
+    {
+        public static LinkedList<int> InitializareLista()
         {
-            public int data;
-            public Node next;
+            LinkedList<int> list = new LinkedList<int>();
+
+            LinkedListNode<int> firstNode = list.AddFirst(10);
+            list.AddAfter(firstNode, 20);
+            list.AddLast(30);
+            list.AddLast(30);
+            list.AddLast(50);
+            list.AddLast(60);
+
+            return list;
+        }
+        public static void ThirdElementFromEndList(LinkedList<int> list)
+        {
+            for (int i = 0; i < list.Count; i++)
+                if (list.Count - i == 3)
+                {
+                    Console.WriteLine("The 3rd element from the end of the list is: " + list.ElementAt(i));
+                    break;
+                }
         }
 
-        // function to get a new node  
-        static Node getNode(int data)
+        public static void DisplayList(LinkedList<int> list)
         {
-            // allocate space  
-            Node newNode = new Node();
-
-            // put in data  
-            newNode.data = data;
-            newNode.next = null;
-            return newNode;
+            foreach (var node in list)
+                Console.Write(node + " ");
+            Console.WriteLine();
         }
 
-        // funnction to recursively  
-        // find the nth node from  
-        // the last of the linked list  
-        static void findNthFromLast(Node head, int n,
-                                    Node nth_last)
+        static void Main(string[] args)
         {
-            // if list is empty  
-            if (head == null)
-                return;
+            LinkedList<int> list = InitializareLista();
+            DisplayList(list);
+            ThirdElementFromEndList(list);
+            Console.WriteLine(list.ElementAt(list.Count - 3));
+            Console.ReadKey();
 
-            // recursive call  
-            findNthFromLast(head.next, n, nth_last);
-
-            // increment count  
-            count = count + 1;
-
-            // if true, then head is the 
-            // nth node from the last  
-            if (count == n)
-            {
-                data = head.data;
-            }
         }
 
-        // utility function to find  
-        // the nth node from the last 
-        // of the linked list  
-        static void findNthFromLastUtil(Node head, int n)
-        {
-            // Initialize  
-            Node nth_last = new Node();
-            count = 0;
-
-            // find nth node from the last  
-            findNthFromLast(head, n, nth_last);
-
-            // if node exists, then print it  
-            if (nth_last != null)
-                Console.WriteLine("Nth node from last is: " +
-                                                        data);
-            else
-                Console.WriteLine("Node does not exists");
-        }
-
-        // Driver Code 
-        public static void Main(String[] args)
-        {
-            // linked list: 4.2.1.5.3  
-            Node head = getNode(4);
-            head.next = getNode(2);
-            head.next.next = getNode(1);
-            head.next.next.next = getNode(5);
-            head.next.next.next.next = getNode(3);
-
-            int n = 3;
-
-            findNthFromLastUtil(head, n);
-        }
     }
-
 }
 
