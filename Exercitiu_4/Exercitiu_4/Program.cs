@@ -23,8 +23,7 @@ namespace Exercitiu_4
                 }
             
 
-            //int[] items = { 2, 3, 5, 4, 7, 1 };
-            //Console.WriteLine(ContainsDuplicates(items));
+           
         }
         public static bool ContainsDuplicates(int[] a)
         {
