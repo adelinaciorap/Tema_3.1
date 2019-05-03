@@ -66,7 +66,7 @@ namespace Exercitiu_3
 
                 return 1;
 
-            int result = 1;
+            double result = 1;
 
             for (int i = 2; i <= n; i++)
 
