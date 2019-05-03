@@ -7,69 +7,62 @@ using System.Threading.Tasks;
 namespace Exercitiu_18
 {
     class Program
-    { //Write code to reverse a linked list, if you able to do it using loops, try to solve with recursion?
+    {
+
+        //Write code to reverse a linked list, if you able to do it using loops, try to solve with recursion?
+        public static LinkedList<int> InitializareLista()
+        {
+            LinkedList<int> list = new LinkedList<int>();
+
+            LinkedListNode<int> firstNode = list.AddFirst(10);
+            list.AddAfter(firstNode, 20);
+            list.AddLast(30);
+            list.AddLast(40);
+            list.AddLast(50);
+            return list;
+        }
+
+        public static LinkedList<int> ReverseList(LinkedList<int> list)
+        {
+            LinkedList<int> reversedList = new LinkedList<int>();
+
+            foreach (int element in list)
+                reversedList.AddFirst(element);
+            //for (int i = list.Count - 1; i >= 0; i--)
+            //    reversedList.AddLast(list.ElementAt(i));
+            list = reversedList;
+            return list;
+
+        }
+
+        public static void DisplayList(LinkedList<int> list)
+        {
+            foreach (var node in list)
+                Console.Write(node + " ");
+            Console.WriteLine();
+        }
+
+
         static void Main(string[] args)
         {
-            LinkItem item = generateLinkList(5);
-            printLinkList(item);
-            Console.WriteLine("Reversing the list ...");
-            LinkItem newItem = reverseLinkList(item);
-            printLinkList(newItem);
-            Console.ReadLine();
+            LinkedList<int> list = InitializareLista();
+            Console.Write("Lista: ");
+            DisplayList(list);
+            Console.Write("Lista inversata: ");
+            list = ReverseList(list);
+            DisplayList(list);
+
+            Console.ReadKey();
+
+
+
+
         }
 
-       private static LinkItem generateLinkList(int total)
-        {
-            LinkItem item = new LinkItem();
-            for (int number = total; number >= 1; number--)
-            {
-                item = new LinkItem
-                {
-                    name = string.Format("I am the link item number {0}.", number),
-                    next = (number == total) ? null : item
-                };
-            }
-            return item;
-        }
 
-        static public void printLinkList(LinkItem item)
-        {
-            while (item != null)
-            {
-                Console.WriteLine(item.name);
-                item = item.next;
-            }
-        }
 
-        private static LinkItem reverseLinkList(LinkItem item)
-        {
-            LinkItem newItem = new LinkItem
-            {
-                name = item.name,
-                next = null
-            };
 
-            while (item.next != null)
-            {
-                newItem = new LinkItem
-                {
-                    name = item.next.name,
-                    next = newItem
-                };
-
-                item = item.next;
-            }
-
-            return newItem;
-        }
     }
-
-    class LinkItem
-    {
-        public string name;
-        public LinkItem next;
-    }
-
-} 
+}
 
 
